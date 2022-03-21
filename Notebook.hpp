@@ -12,7 +12,7 @@ namespace ariel{
         map<unsigned int, map<unsigned int, char[100]>> book;
         
         public:
-        static void write(unsigned int page, unsigned int row, unsigned int column, Direction d , string str);
+        static void write(unsigned int page, unsigned int row, unsigned int column, Direction d , string const str);
         static string read(unsigned int page, unsigned int row, unsigned int column, Direction d ,unsigned int length);
         static void erase(unsigned int page, unsigned int row, unsigned int column,Direction d ,unsigned int length);
         void show(unsigned int page);
