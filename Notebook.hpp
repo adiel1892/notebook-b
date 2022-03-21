@@ -9,7 +9,7 @@ using namespace std;
 namespace ariel{
     class Notebook{
         private:
-        map<unsigned int, map<unsigned int, unsigned int>> book;
+        map<unsigned int, map<unsigned int, char[100]>> book;
         
         public:
         static void write(unsigned int page, unsigned int row, unsigned int column, Direction d , string str);

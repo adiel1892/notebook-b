@@ -6,6 +6,7 @@ void Notebook::write(unsigned int page, unsigned int row, unsigned int column, D
     if(column > MAX_COLUMN || str.length() > MAX_COLUMN || (column + str.length()) > MAX_COLUMN){
         __throw_invalid_argument("Make sure the column and the string less than 100.");
     }
+    
 
 }
 string Notebook::read(unsigned int page, unsigned int row, unsigned int column, Direction d ,unsigned int length){
