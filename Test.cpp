@@ -1,3 +1,5 @@
+
+   
 #include "doctest.h"
 #include "Notebook.hpp"
 #include <iostream>
@@ -70,5 +72,16 @@ TEST_CASE("writing on a writen or deleaten place is illegal"){
     CHECK_THROWS(a.write(0,3,4, Direction::Vertical , "aba"));
     CHECK_THROWS(a.write(0,3,6, Direction::Vertical , "aba"));
     CHECK_THROWS(a.write(0,3,5, Direction::Vertical , "aba"));
+
+}
+TEST_CASE("column or string bigger than 100"){
+    Notebook a;
+    CHECK_THROWS(a.write(0,3,101, Direction::Horizontal , "aba"));
+    CHECK_THROWS(a.write(0,3,95, Direction::Horizontal , "abaabababa"));
+    CHECK_THROWS(a.read(0,3,95, Direction::Horizontal , 6));
+    CHECK_THROWS(a.read(0,3,101, Direction::Horizontal , 6));
+    CHECK_THROWS(a.erase(0,3,101, Direction::Horizontal , 6));
+    CHECK_THROWS(a.erase(0,3,108, Direction::Horizontal , 6));
+
 
 }
