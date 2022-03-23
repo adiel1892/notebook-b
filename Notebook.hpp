@@ -9,9 +9,9 @@ using namespace std;
 namespace ariel{
     class Notebook{
         public:
-        void write(int page,int row,int column, Direction d , string const& str);
+        static void write(int page,int row,int column, Direction d , string const& str);
         string read(int page,int row,int column, Direction d ,int length);
-        void erase(int page,int row,int column,Direction d ,int length);
+        static void erase(int page,int row,int column,Direction d ,int length);
         void show(int page);
         Notebook();
         unordered_map<int, unordered_map<int, char[100]>> book;
