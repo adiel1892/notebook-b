@@ -14,7 +14,8 @@ namespace ariel{
         void erase(int page,int row,int column,Direction d ,int length);
         void show(int page);
         void makeRow(int page , int row);
+        void hasMade(int page, int row);
         Notebook();
-        unordered_map<int, unordered_map<int, char[100]>> book;
+        unordered_map<int, unordered_map<int, char*>> book;
     };
 }
