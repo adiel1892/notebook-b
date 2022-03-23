@@ -9,11 +9,11 @@ using namespace std;
 namespace ariel{
     class Notebook{
         public:
-        void write(unsigned int page, unsigned int row, unsigned int column, Direction d , string const& str);
-        string read(unsigned int page, unsigned int row, unsigned int column, Direction d ,unsigned int length);
-        void erase(unsigned int page, unsigned int row, unsigned int column,Direction d ,unsigned int length);
-        void show(unsigned int page);
+        void write(int page,int row,int column, Direction d , string const& str);
+        string read(int page,int row,int column, Direction d ,int length);
+        void erase(int page,int row,int column,Direction d ,int length);
+        void show(int page);
         Notebook();
-        unordered_map<unsigned int, unordered_map<unsigned int, char[100]>> book;
+        unordered_map<int, unordered_map<int, char[100]>> book;
     };
 }
