@@ -1,5 +1,3 @@
-
-   
 #include "doctest.h"
 #include "Notebook.hpp"
 #include <iostream>
@@ -50,12 +48,6 @@ TEST_CASE("Good Notebook"){
     a.erase(0,0,3,Direction::Vertical,5);
     CHECK(a.read(0,0,3,Direction::Vertical,5) == "~~~~~");
     CHECK(a.read(0,1,0,Direction::Horizontal,5) == "i__~c");
-
-
-
-
-
-
 }
 
 TEST_CASE("writing on a writen or deleaten place is illegal"){
