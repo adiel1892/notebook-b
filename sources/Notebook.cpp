@@ -40,7 +40,12 @@ void Notebook::write(int page, int row,int column, Direction d ,string const& st
             if(this->book.at(page).at(row)[i] != '_'){
                 __throw_invalid_argument("Can't write on a written or deleten place.");
             }
+            // if(str[index] == '~'){
+            //     __throw_invalid_argument("Can't write ~");
+            // }
+            // index++;
         }
+        index = 0;
         // if the place is good so we can write
         
         for(unsigned int i = column_u; i < column_u + str.length(); i++){
@@ -116,5 +121,13 @@ void Notebook::erase(int page,int row,int column,Direction d ,int length){
     }
 }
 void Notebook::show(int page){
-
+    // showing the first 50 lines.
+    int line = 0;
+    string showing;
+    while(line < 50){
+        hasMade(page, line);
+        showing += read(page, line , 0 , Direction::Horizontal , 100) + "\n";
+        line++;
+    }
+    printf("%s" , showing.c_str());
 }

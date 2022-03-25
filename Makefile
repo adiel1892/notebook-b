@@ -2,7 +2,7 @@
 # This Makefile can handle any set of cpp and hpp files.
 # To use it, you should put all your cpp and hpp files in the SOURCE_PATH folder.
 
-CXX=clang++-9 
+CXX=clang++
 CXXVERSION=c++2a
 SOURCE_PATH=sources
 OBJECT_PATH=objects
@@ -14,19 +14,23 @@ SOURCES=$(wildcard $(SOURCE_PATH)/*.cpp)
 HEADERS=$(wildcard $(SOURCE_PATH)/*.hpp)
 OBJECTS=$(subst sources/,objects/,$(subst .cpp,.o,$(SOURCES)))
 
-run: test1 test2 test3
+run: test1
+# run: test1 test2 test3
 
-test1: TestRunner.o StudentTest1.o  $(OBJECTS)
+test1: TestRunner.o Test.cpp  $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-test2: TestRunner.o StudentTest2.o  $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+# test2: TestRunner.o StudentTest2.o  $(OBJECTS)
+# 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-test3: TestRunner.o StudentTest3.o  $(OBJECTS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+# test3: TestRunner.o StudentTest3.o  $(OBJECTS)
+# 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-%.o: %.cpp $(HEADERS)
+$(OBJECT_PATH)/%.o: ${SOURCE_PATH}/%.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
+
+# %.o: %.cpp $(HEADERS)
+	
 
 # StudentTest1.cpp:  # Shani Shuv
 # 	curl https://raw.githubusercontent.com/ShaniShuv/cppm2/master/Test.cpp > $@
