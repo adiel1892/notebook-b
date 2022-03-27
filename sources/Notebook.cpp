@@ -1,4 +1,5 @@
 
+
 #include "Notebook.hpp"
 using namespace ariel;
 
@@ -22,7 +23,7 @@ void Notebook::hasMade(int page, int row){
     }
 }
 
-void Notebook::write(int page, int row,int column, Direction d ,string const& str){
+void Notebook::checkInput(int page, int row, int column, string const& str){
     if(column > MAX_COLUMN - 1 || row < 0 || column < 0 || page < 0 || str.length() < 0){
         __throw_invalid_argument("invalid page , row , column str.length. - write");
     }
@@ -30,13 +31,16 @@ void Notebook::write(int page, int row,int column, Direction d ,string const& st
         __throw_invalid_argument("Can't write ~");
     }
     for(unsigned int i = 0; i < str.length(); i++){
-        if(str[i] < 32 || str[i] > 126){
+        if(str[i] < LIML || str[i] > LIMR){
             __throw_invalid_argument("invalid char - write");
         }
     }
-    if(str.find("\n") != std::string::npos){
-    __throw_invalid_argument("Can't write new line");
+    if(str.find('\n') != std::string::npos){
+        __throw_invalid_argument("Can't write new line");
     }
+}
+void Notebook::write(int page, int row,int column, Direction d ,string const& str){
+    checkInput(page,row,column,str);
     
     hasMade(page,row);
     int index = 0;
@@ -129,12 +133,6 @@ void Notebook::erase(int page,int row,int column,Direction d ,int length){
     }
 }
 void Notebook::show(int page){
-    // showing the first 100 lines.
-    // try{
-    //     this->book.at(page);
-    // }catch(exception e){
-       
-    // }
     int line = 0;
     while(line < MAX_COLUMN){
         hasMade(page, line);
