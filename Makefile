@@ -14,29 +14,31 @@ SOURCES=$(wildcard $(SOURCE_PATH)/*.cpp)
 HEADERS=$(wildcard $(SOURCE_PATH)/*.hpp)
 OBJECTS=$(subst sources/,objects/,$(subst .cpp,.o,$(SOURCES)))
 
-run: test1
-# run: test1 test2 test3
+run: test1 test2 test3
 
-test1: TestRunner.o Test.cpp  $(OBJECTS)
+test1: TestRunner.o StudentTest1.o  $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# test2: TestRunner.o StudentTest2.o  $(OBJECTS)
-# 	$(CXX) $(CXXFLAGS) $^ -o $@
+test2: TestRunner.o StudentTest2.o  $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-# test3: TestRunner.o StudentTest3.o  $(OBJECTS)
-# 	$(CXX) $(CXXFLAGS) $^ -o $@
+test3: TestRunner.o StudentTest3.o  $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-$(OBJECT_PATH)/%.o: ${SOURCE_PATH}/%.cpp $(HEADERS)
+%.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
-# %.o: %.cpp $(HEADERS)
-	
+$(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
-# StudentTest1.cpp:  # Shani Shuv
-# 	curl https://raw.githubusercontent.com/ShaniShuv/cppm2/master/Test.cpp > $@
+StudentTest1.cpp:  # Aviad Gilboa
+	curl https://raw.githubusercontent.com/Avgilboa/notebook-a/main/Test.cpp > $@
 
-# StudentTest2.cpp:  # Reut Maslansky
-# 	curl https://raw.githubusercontent.com/Reut-Maslansky/Ariel-CPP--ex2/master/Test.cpp > $@
+StudentTest2.cpp:  # Orel Zelmer
+	curl https://raw.githubusercontent.com/orelz890/Ex2_cpp_a/main/Test.cpp > $@
+
+StudentTest3.cpp:  # Ofri Tavor
+	curl https://raw.githubusercontent.com/Unusual55/CPP_Ex2_a/main/Test.cpp > $@
 
 tidy:
 	clang-tidy $(SOURCES) $(TIDY_FLAGS) --
