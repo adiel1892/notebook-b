@@ -30,7 +30,7 @@ void Notebook::write(int page, int row,int column, Direction d ,string const& st
         __throw_invalid_argument("Can't write ~");
     }
     for(unsigned int i = 0; i < str.length(); i++){
-        if(str[i] < 32 && str[i] > 126){
+        if(str[i] < 32 || str[i] > 126){
             __throw_invalid_argument("invalid char - write");
         }
     }
@@ -60,7 +60,8 @@ void Notebook::write(int page, int row,int column, Direction d ,string const& st
             index++;
         }
     }else if(d == Direction::Vertical){
-        for(int i = row; i < 10000; i++){
+        int len = row + (int)(str.length());
+        for(int i = row; i < len; i++){
             hasMade(page, i);
         }
         for(unsigned int i = row_u; i < row_u + str.length(); i++){
@@ -90,7 +91,8 @@ string Notebook::read(int page, int row,int column, Direction d , int length){
             output +=  this->book.at(page).at(row)[i];
         }
     }else if(d == Direction::Vertical){
-        for(int i = row; i < 10000; i++){
+        int len = row + length;
+        for(int i = row; i < len; i++){
             hasMade(page, i);
         }
         for(int i = row; i < row + length; i++){
@@ -114,7 +116,8 @@ void Notebook::erase(int page,int row,int column,Direction d ,int length){
             index++;
         }
     }else if(d == Direction::Vertical){
-        for(int i = row; i < 10000; i++){
+        int len = row + length;
+        for(int i = row; i < len; i++){
             hasMade(page, i);
         }
         // if the place is good so we can write
