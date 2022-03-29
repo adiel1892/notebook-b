@@ -16,6 +16,7 @@ namespace ariel{
         void show(int page);
         void makeRow(int page , int row);
         void hasMade(int page, int row);
+        ~Notebook();
         static void checkInput(int page, int row, int column,string const& str);
         Notebook();
         unordered_map<int, unordered_map<int, char*>> book;
