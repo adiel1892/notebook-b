@@ -6,6 +6,13 @@ using namespace ariel;
 Notebook::Notebook(){
     
 }
+Notebook::~Notebook(){
+       for (auto const &pageKeys: this->book) {
+           for(auto const &rowKeys: pageKeys.second){
+               delete [] rowKeys.second;
+           }
+       }
+   }
 
 void Notebook::makeRow(int page, int row){
     char *txt = new char[MAX_COLUMN];
